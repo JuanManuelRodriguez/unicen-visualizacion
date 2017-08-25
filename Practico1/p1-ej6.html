@@ -1,0 +1,31 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>Template</title>
+	</head>
+	<body>
+		<script
+  src="https://code.jquery.com/jquery-2.2.4.min.js"
+  integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+  crossorigin="anonymous"></script>
+		<div>
+			<input type="file" id="file-input"/>
+		</div>
+		<div>
+			<button onclick="colorBlancoNegro()">Blanco y negro</button>
+			<button onclick="colorNegativo()">Negativo</button>
+			<button onclick="colorSepia()">Sepia</button>	
+			<button onclick="contraste(75)">Contraste</button>	
+			<button onclick="brillo(25)"> Brillo</button>
+			<button onclick="segmentacion(128)"> Segmentacion</button>
+			<button onclick="difuminado()"> Blur</button>
+			<button onclick="guardar()"> Descargar</button>
+		</div>
+		<div>
+			<canvas id="canvas" width="900" height="600" style="border:#000 solid 1px;" />
+		</div>
+
+		
+		<script type="text/javascript" src="js/p1-ej6.js"></script>
+</html>
