@@ -1,6 +1,8 @@
-var ctx = document.getElementById("canvas").getContext("2d");
+var canvas = document.getElementById("canvas")
+var ctx = canvas.getContext("2d");
 var width = 900;
 var height = 600;
+var originalImage = new Image();
 
 function getRed(imageData,x,y){
 	indice = (x + y * imageData.width) * 4;
@@ -88,7 +90,6 @@ function brillo(level) {
 }	
 
 function segmentacion(umbral){
-	console.log("segmentacion");
 	var red,green,blue;
 	for (var x = 0; x < imageData.width; x++) {
         for (var y = 0; y < imageData.height; y++) {
@@ -103,7 +104,6 @@ function segmentacion(umbral){
 }
 
 function difuminado(){
-	console.log("blur");
 	var red,green,blue;
 	for (var x = 1; x < imageData.width-1; x++) {
         for (var y = 1; y < imageData.height-1; y++) {
@@ -123,6 +123,130 @@ function difuminado(){
     ctx.putImageData(imageData,0,0);
 }
 
+  function Sobel() {
+    var width = imageData.width;
+    var height = imageData.height;
+
+    var kernelX = [
+      [-1,0,1],
+      [-2,0,2],
+      [-1,0,1]
+    ];
+
+    var kernelY = [
+      [-1,-2,-1],
+      [0,0,0],
+      [1,2,1]
+    ];
+
+    var sobelData = [];
+    var grayscaleData = [];
+
+    function bindPixelAt(data) {
+      return function(x, y, i) {
+        i = i || 0;
+        return data[((width * y) + x) * 4 + i];
+      };
+    }
+
+    var data = imageData.data;
+    var pixelAt = bindPixelAt(data);
+    var x, y;
+
+    for (y = 0; y < height; y++) {
+      for (x = 0; x < width; x++) {
+        var r = pixelAt(x, y, 0);
+        var g = pixelAt(x, y, 1);
+        var b = pixelAt(x, y, 2);
+
+        var avg = (r + g + b) / 3;
+        grayscaleData.push(avg, avg, avg, 255);
+      }
+    }
+
+    pixelAt = bindPixelAt(grayscaleData);
+    for (y = 0; y < height; y++) {
+      for (x = 0; x < width; x++) {
+        var pixelX = (
+            (kernelX[0][0] * pixelAt(x - 1, y - 1)) +
+            (kernelX[0][1] * pixelAt(x, y - 1)) +
+            (kernelX[0][2] * pixelAt(x + 1, y - 1)) +
+            (kernelX[1][0] * pixelAt(x - 1, y)) +
+            (kernelX[1][1] * pixelAt(x, y)) +
+            (kernelX[1][2] * pixelAt(x + 1, y)) +
+            (kernelX[2][0] * pixelAt(x - 1, y + 1)) +
+            (kernelX[2][1] * pixelAt(x, y + 1)) +
+            (kernelX[2][2] * pixelAt(x + 1, y + 1))
+        );
+
+        var pixelY = (
+          (kernelY[0][0] * pixelAt(x - 1, y - 1)) +
+          (kernelY[0][1] * pixelAt(x, y - 1)) +
+          (kernelY[0][2] * pixelAt(x + 1, y - 1)) +
+          (kernelY[1][0] * pixelAt(x - 1, y)) +
+          (kernelY[1][1] * pixelAt(x, y)) +
+          (kernelY[1][2] * pixelAt(x + 1, y)) +
+          (kernelY[2][0] * pixelAt(x - 1, y + 1)) +
+          (kernelY[2][1] * pixelAt(x, y + 1)) +
+          (kernelY[2][2] * pixelAt(x + 1, y + 1))
+        );
+
+        var magnitude = Math.sqrt((pixelX * pixelX) + (pixelY * pixelY))>>>0;
+
+        sobelData.push(magnitude, magnitude, magnitude, 255);
+      }
+    }
+
+    var clampedArray = sobelData;
+    if (typeof Uint8ClampedArray === 'function') {
+      clampedArray = new Uint8ClampedArray(sobelData);
+    }
+    clampedArray.toImageData = function() {
+      return Sobel.toImageData(clampedArray, width, height);
+    };
+
+    return clampedArray;
+  }
+
+  Sobel.toImageData = function toImageData(data, width, height) {
+    if (typeof ImageData === 'function' && Object.prototype.toString.call(data) === '[object Uint16Array]') {
+      return new ImageData(data, width, height);
+    } else {
+      if (typeof window === 'object' && typeof window.document === 'object') {
+        var canvas = document.createElement('canvas');
+
+        if (typeof canvas.getContext === 'function') {
+          var context = canvas.getContext('2d');
+          var imageData = context.createImageData(width, height);
+          imageData.data.set(data);
+          return imageData;
+        } else {
+          return new FakeImageData(data, width, height);
+        }
+      } else {
+        return new FakeImageData(data, width, height);
+      }
+    }
+  };
+
+  function FakeImageData(data, width, height) {
+    return {
+      width: width,
+      height: height,
+      data: data
+    };
+  }
+
+function deteccionDeBordes(){
+  var sobelData = Sobel();
+  var sobelImageData = sobelData.toImageData();
+  ctx.putImageData(sobelImageData, 0, 0);
+}
+
+function recuperarImagen(){
+    ctx.drawImage(originalImage, 0, 0);
+}
+
 function guardar() {
     var link = window.document.createElement( 'a' ),
         url = canvas.toDataURL(),
@@ -136,28 +260,31 @@ function guardar() {
     window.document.body.removeChild( link );
 };
 
-$(function() {
-    $('#file-input').change(function(e) {
-        var file = e.target.files[0],
-            imageType = /image.*/;
-        
-        if (!file.type.match(imageType))
-            return;
-        
-        var reader = new FileReader();
-        reader.onload = fileOnload;
-        reader.readAsDataURL(file);
-        
-    });
-    
-    function fileOnload(e) {
-        var $img = $('<img>', { src: e.target.result });
-        var canvas = $('#canvas')[0];
-        var context = canvas.getContext('2d');
 
-        $img.load(function() {
-            context.drawImage(this, 0, 0);
-            imageData = ctx.getImageData(0,0,this.width,this.height);//width y height son tomados de la imagen	
-        });
-    }
-});
+var fileInput = document.getElementById('file-input');
+
+fileInput.onchange = function(event) {
+  var url = window.URL.createObjectURL(event.target.files[0]);
+  loadImage(url);
+};
+
+function loadImage(src) {
+  var image = new Image();
+  image.src = src;
+  originalImage.src = src;
+console.log(image);
+  image.onload = drawImage;
+}
+function drawImage(event) {
+  var image = event.target;
+  console.log("imagen",image);
+  var width = image.width;
+  var height = image.height;
+
+  canvas.width  = width;
+  canvas.height =  height;
+
+  ctx.drawImage(image, 0, 0);
+  imageData = ctx.getImageData(0, 0, width, height);
+
+}

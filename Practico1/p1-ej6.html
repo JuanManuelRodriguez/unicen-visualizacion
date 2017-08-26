@@ -2,28 +2,40 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-		<title>Template</title>
+		<title>Practico 1 - Ejercicio 6</title>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+		<link rel="stylesheet" href="css/main.css"/>
 	</head>
 	<body>
-		<script
-  src="https://code.jquery.com/jquery-2.2.4.min.js"
-  integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
-  crossorigin="anonymous"></script>
-		<div>
-			<input type="file" id="file-input"/>
+		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+		
+		<div class="container-fluid text-center sticky-top">
+			<img src="tudaigram.png" height="60" width="75"><h1 class="">Tudaigram</h1>
 		</div>
-		<div>
-			<button onclick="colorBlancoNegro()">Blanco y negro</button>
-			<button onclick="colorNegativo()">Negativo</button>
-			<button onclick="colorSepia()">Sepia</button>	
-			<button onclick="contraste(75)">Contraste</button>	
-			<button onclick="brillo(25)"> Brillo</button>
-			<button onclick="segmentacion(128)"> Segmentacion</button>
-			<button onclick="difuminado()"> Blur</button>
-			<button onclick="guardar()"> Descargar</button>
+		<div class="container-fluid">
+			<nav class="navbar navbar-dark bg-dark">
+			  <input class="btn btn-outline-success" type="file" id="file-input">
+			</nav>
 		</div>
-		<div>
-			<canvas id="canvas" width="900" height="600" style="border:#000 solid 1px;" />
+		<div class="container-fluid">
+			<div class="row">
+				<div class="btn-group-vertical col-md-2">
+					<button type="button" class="btn btn-info" onclick="colorBlancoNegro()">Blanco y negro</button>
+					<button type="button" class="btn btn-info" onclick="colorNegativo()">Negativo</button>
+					<button type="button" class="btn btn-info" onclick="colorSepia()">Sepia</button>	
+					<button type="button" class="btn btn-info" onclick="contraste(80)">Contraste</button>	
+					<button type="button" class="btn btn-info" onclick="brillo(25)"> Brillo</button>
+					<button type="button" class="btn btn-info" onclick="segmentacion(128)"> Segmentacion</button>
+					<button type="button" class="btn btn-info" onclick="difuminado()"> Blur</button>
+					<button type="button" class="btn btn-info" onclick="deteccionDeBordes()"> Deteccion de bordes</button>
+					<button type="button" class="btn btn-primary" onclick="recuperarImagen()"> Imagen original</button>
+					<button type="button" class="btn btn-primary" onclick="guardar()"> Descargar</button>
+				</div>
+				<div class="col-md-10">
+					<canvas id="canvas" width="900" height="600" style="border:#000 solid 1px;" />
+				</div>
+			</div>
 		</div>
 
 		
