@@ -1,8 +1,5 @@
 var canvas = document.getElementById("canvas");
 var ctx = canvas.getContext("2d"),
-	draggingCir = false,
-	draggingRec = false,
-	draggingReCua = false,
 	x=0,
 	y=0;
 
@@ -29,6 +26,7 @@ function Rectangulo(x,y,width,height,color) {
 	this.width=width;
 	this.height=height;
 	this.color=color;
+	this.dragging=false;
 }
 
 Rectangulo.prototype.dibujar= function(){
@@ -42,16 +40,7 @@ Rectangulo.prototype.mousedown = function(layerX,layerY){
 	var x = layerX;
 	var y = layerY;
 	if((x <= (this.posx+this.width) && x >= this.posx) && (y <= (this.posy+this.height) && y >= this.posy)){
-		this.color=colourRandom();
-		console.log("click dentro del rectangulo. El color del rectangulo cambiara");
-		if(this.width === this.height){
-			draggingCua = true;
-		}else{
-			draggingRec = true;
-		}
-	}
-	else{
-		console.log("click fuera del rectangulo");
+		this.dragging = true;
 	}
 }
 
@@ -60,6 +49,7 @@ function Circulo(x,y,radio,color){
 	this.posy=y;
 	this.radio=radio;
 	this.color=color;
+	this.dragging=false;
 }
 
 Circulo.prototype.dibujar= function(){
@@ -75,75 +65,146 @@ Circulo.prototype.mousedown = function(layerX,layerY){
 	var y = Math.pow((layerY-this.posy),2);
 	var d1 = Math.sqrt(x + y);
 	if(d1 <= this.radio){
-		this.color=colourRandom();
-		console.log("click dentro del circulo. El color del circulo cambiara");
-		draggingCir = true;
+		this.dragging = true;
 	}
-	else{
-		console.log("click fuera del circulo");
-	}
-
 }
-var color = colourRandom();
-var x = positionRandom(canvas.width);
-var y = positionRandom(canvas.height);
-var xr = positionRandom(canvas.width);
-var yr = positionRandom(canvas.height);
-var xcua = positionRandom(canvas.width);
-var ycua = positionRandom(canvas.height);
 
-var cir = new Circulo(x,y,75,color);
-var rec = new Rectangulo(xr,yr,150,80);
-var cua = new Rectangulo(xcua,ycua,100,100);
+function Triangulo(posx,posy,color) {
+	this.posx=posx;
+	this.posy=posy;
+	this.color=color;
+	this.dragging=false;
+}
+
+Triangulo.prototype.dibujar= function(){
+	ctx.beginPath();//triangulo equilatero de 80px de base y 50px de altura
+	ctx.fillStyle=this.color;
+	ctx.moveTo(this.posx,this.posy);
+    ctx.lineTo(this.posx+40,this.posy+50);
+    ctx.lineTo(this.posx-40,this.posy+50);
+    ctx.fill();
+	ctx.closePath();
+}
+
+Triangulo.prototype.mousedown = function(layerX,layerY){
+	var x = layerX;
+	var y = layerY;
+	if((x <= (this.posx+40)) && (x >= (this.posx-40)) && (y >= (this.posy)) && (y <= (this.posy+50))){
+		this.dragging = true;
+	}
+}
+
+function BordeRectangulo(x,y,width,height,color) {
+	this.posx=x;
+	this.posy=y;
+	this.width=width;
+	this.height=height;
+	this.color=color;
+}
+
+BordeRectangulo.prototype.dibujar= function(){
+	ctx.fillStyle=this.color;
+	ctx.beginPath();
+	ctx.strokeRect(this.posx, this.posy, this.width, this.height);
+	ctx.closePath();
+}
+
+function BordeCirculo(x,y,radio,color){
+	this.posx=x;
+	this.posy=y;
+	this.radio=radio;
+	this.color=color;
+}
+
+BordeCirculo.prototype.dibujar= function(){
+	ctx.fillStyle=this.color;
+	ctx.beginPath();
+	ctx.arc(this.posx,this.posy,this.radio,0,(Math.PI/180)*360,true);
+	ctx.stroke();
+	ctx.closePath();
+}
+
+function BordeTriangulo(posx,posy,color) {
+	this.posx=posx;
+	this.posy=posy;
+	this.color=color;
+	this.dragging=false;
+}
+
+BordeTriangulo.prototype.dibujar= function(){
+	ctx.beginPath();//triangulo equilatero de 80px de base y 50px de altura
+	ctx.fillStyle=this.color;
+	ctx.moveTo(this.posx,this.posy);
+    ctx.lineTo(this.posx+40,this.posy+50);
+    ctx.lineTo(this.posx-40,this.posy+50);
+    ctx.lineTo(this.posx,this.posy);
+    ctx.stroke();
+	ctx.closePath();
+}
+
+var rojo = "#ff0000";
+var verde = "#00ff00";
+var azul = "#0000ff";
+var gris = "#555555";
+var amarillo = "#ffff00";
+var negro = "#000000"
+
+var tablero = new Rectangulo(canvas.width/2,0,canvas.width/2,canvas.height,amarillo);
+
+var circulo = new Circulo(50,50,50,rojo);//posicion de incio (50,50) r=50
+var rectangulo = new Rectangulo(10,110,75,50,verde);//posicion de incio (10,110) w=75,h=50
+var cuadrado = new Rectangulo(10,170,50,50,azul);//posicion de incio (10,170) w=50,h=50
+var triangulo = new Triangulo(50,230,gris);//posicion de inicio (50,230) w=80,h=50
+
+var bCirculo = new BordeCirculo(canvas.width*5/8,canvas.height/4,50,negro);
+var bRectangulo = new BordeRectangulo(canvas.width*5/8,canvas.height*3/4,75,50,negro);
+var bCuadrado = new BordeRectangulo(canvas.width*7/8,canvas.height/4,50,50,negro);
+var bTriangulo = new BordeTriangulo(canvas.width*7/8,canvas.height*3/4,negro);
 
 var figuras = [];
-figuras.push(cir);
-figuras.push(rec);
-figuras.push(cua);
+var bordes = [];
+//hacer funciones de dificultades aca
 
+figuras.push(circulo);
+figuras.push(rectangulo);
+figuras.push(cuadrado);
+figuras.push(triangulo);
 
-ctx.onload = cir.dibujar();
-ctx.onload = rec.dibujar();
-ctx.onload = rec.dibujar();
+bordes.push(bCirculo);
+bordes.push(bRectangulo);
+bordes.push(bCuadrado);
+bordes.push(bTriangulo);
+
+tablero.dibujar();
+for (var i = 0; i < figuras.length; i++) {
+	console.log(figuras[i]);
+	ctx.onload = figuras[i].dibujar();
+	ctx.onload = bordes[i].dibujar();
+}
 
 canvas.onmousedown = function(event){
-	cir.mousedown(event.layerX,event.layerY);
-	rec.mousedown(event.layerX,event.layerY);
-	cua.mousedown(event.layerX,event.layerY);
-	if(draggingCir){
-		canvas.onmousemove = function(e){
-			cir.posx=e.layerX;
-			cir.posy=e.layerY;
-			borrar();
-			cir.dibujar();
-			rec.dibujar();
-			cua.dibujar();
-		}	
+	for (var i = 0; i < figuras.length; i++) {//saco del bucle al tablero
+		figuras[i].mousedown(event.layerX,event.layerY);
 	}
-	if(draggingRec){
-		canvas.onmousemove = function(e){
-			rec.posx=e.layerX;
-			rec.posy=e.layerY;
-			borrar();
-			rec.dibujar();
-			cir.dibujar();
-			cua.dibujar();
-		}	
-	}
-	if(draggingCua){
-		canvas.onmousemove = function(e){
-			cua.posx=e.layerX;
-			cua.posy=e.layerY;
-			borrar();
-			cua.dibujar();
-			rec.dibujar();
-			cir.dibujar();
-		}	
+	for (var i = 0; i < figuras.length; i++) {//saco del bucle al tablero
+		if(figuras[i].dragging == true){
+			var fig = i;
+			canvas.onmousemove = function(e){
+				figuras[fig].posx=e.layerX;
+				figuras[fig].posy=e.layerY;
+				borrar();
+				tablero.dibujar();
+				for (var j = 0; j < figuras.length; j++) {
+					figuras[j].dibujar();
+					bordes[j].dibujar();
+				}
+			}
+		}		
 	}
 }
 canvas.onmouseup = function (){
-	draggingCir=false;
-	draggingRec=false;
-	draggingCua=false;
+	for (var i = 0; i < figuras.length-1; i++) {
+		figuras[i].dragging=false;
+	}
 	canvas.onmousemove=null;
 }
