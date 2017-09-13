@@ -128,6 +128,8 @@ function BordeTriangulo(posx,posy,color) {
 	this.posx=posx;
 	this.posy=posy;
 	this.color=color;
+	this.height=80; //establecidos para poder arrastrar el triangulo desde el centro
+	this.width=50;
 	this.dragging=false;
 }
 
@@ -175,23 +177,30 @@ bordes.push(bRectangulo);
 bordes.push(bCuadrado);
 bordes.push(bTriangulo);
 
+console.log(figuras);
 tablero.dibujar();
 for (var i = 0; i < figuras.length; i++) {
-	console.log(figuras[i]);
 	ctx.onload = figuras[i].dibujar();
 	ctx.onload = bordes[i].dibujar();
 }
-
+console.log("lalala",figuras[0].height);
+console.log("lala",figuras[1].height);
 canvas.onmousedown = function(event){
-	for (var i = 0; i < figuras.length; i++) {//saco del bucle al tablero
+	for (var i = 0; i < figuras.length; i++) {
 		figuras[i].mousedown(event.layerX,event.layerY);
 	}
-	for (var i = 0; i < figuras.length; i++) {//saco del bucle al tablero
+	for (var i = 0; i < figuras.length; i++) {
 		if(figuras[i].dragging == true){
 			var fig = i;
 			canvas.onmousemove = function(e){
-				figuras[fig].posx=e.layerX;
-				figuras[fig].posy=e.layerY;
+
+				if(figuras[fig].height != undefined){ //sirve para poder saber cuales figuras tienen atributo height y width para poder centrar el mouse al arrastrar
+					figuras[fig].posx=e.layerX - figuras[fig].width/2 ;
+					figuras[fig].posy=e.layerY - figuras[fig].height/2;
+				}else{
+					figuras[fig].posx=e.layerX;
+					figuras[fig].posy=e.layerY;
+				}
 				borrar();
 				tablero.dibujar();
 				for (var j = 0; j < figuras.length; j++) {
@@ -203,7 +212,7 @@ canvas.onmousedown = function(event){
 	}
 }
 canvas.onmouseup = function (){
-	for (var i = 0; i < figuras.length-1; i++) {
+	for (var i = 0; i < figuras.length; i++) {
 		figuras[i].dragging=false;
 	}
 	canvas.onmousemove=null;
