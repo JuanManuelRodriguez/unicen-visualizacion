@@ -1,5 +1,17 @@
-div #canvas{
-	text-align: center;
+.timerOn{
+	padding-left: 0;
+    padding-right: 0;
+    margin-bottom: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+#canvas{
+	padding-left: 0;
+    padding-right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
 }
 #message{
 	text-align: center;
