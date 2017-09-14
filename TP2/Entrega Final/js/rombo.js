@@ -1,4 +1,4 @@
-function Triangulo(posx,posy,color,name) {
+function Rombo(posx,posy,color,name) {
 	this.posx=posx;
 	this.posy=posy;
 	this.name=name;
@@ -7,26 +7,28 @@ function Triangulo(posx,posy,color,name) {
 	this.selected=0;
 }
 
-Triangulo.prototype.dibujar= function(){
-	ctx.beginPath();//triangulo equilatero de 80px de base y 50px de altura
+Rombo.prototype.dibujar= function(){
+	ctx.beginPath();//rombo equilatero de 80px de base y 100px de altura
 	ctx.fillStyle=this.color;
 	ctx.moveTo(this.posx,this.posy);
     ctx.lineTo(this.posx+40,this.posy+50);
+    ctx.lineTo(this.posx,this.posy+100);
     ctx.lineTo(this.posx-40,this.posy+50);
+    ctx.lineTo(this.posx,this.posy);
     ctx.fill();
 	ctx.closePath();
 }
 
-Triangulo.prototype.mousedown = function(layerX, layerY){
+Rombo.prototype.mousedown = function(layerX, layerY){
 	var x = layerX;
 	var y = layerY;
-	if((x <= (this.posx+40)) && (x >= (this.posx-40)) && (y >= (this.posy)) && (y <= (this.posy+50))){
+	if((x <= (this.posx+40)) && (x >= (this.posx-40)) && (y >= (this.posy)) && (y <= (this.posy+100))){
 		this.dragging = true;
 		this.selected = 1;
 	}
 }
 
-Triangulo.prototype.unselected = function(){
+Rombo.prototype.unselected = function(){
 	if(this.selected == 1){
 		this.selected=0;
 	}	
@@ -35,31 +37,32 @@ Triangulo.prototype.unselected = function(){
 //--------------figura de encaje --------------------
 
 
-function BordeTriangulo(posx,posy,color,name) {
+function BordeRombo(posx,posy,color,name) {
 	this.posx=posx;
 	this.posy=posy;
 	this.name=name;
 	this.color=color;
-	this.height=50; //establecidos para poder arrastrar el triangulo desde el centro
+	this.height=100; //establecidos para poder arrastrar el triangulo desde el centro
 	this.width=80;
 	this.figIn=false;
 }
 
-BordeTriangulo.prototype.dibujar= function(){
-	ctx.beginPath();//triangulo equilatero de 80px de base y 50px de altura
+BordeRombo.prototype.dibujar= function(){
+	ctx.beginPath();//rombo equilatero de 80px de base y 100px de altura
 	ctx.fillStyle=this.color;
 	ctx.moveTo(this.posx,this.posy);
     ctx.lineTo(this.posx+40,this.posy+50);
+    ctx.lineTo(this.posx,this.posy+100);
     ctx.lineTo(this.posx-40,this.posy+50);
     ctx.lineTo(this.posx,this.posy);
     ctx.stroke();
 	ctx.closePath();
 }
 
-BordeTriangulo.prototype.mouseup = function(layerX,layerY, figura){
+BordeRombo.prototype.mouseup = function(layerX,layerY, figura){
 	var x = layerX;
 	var y = layerY;
-	if((x <= (this.posx+40)) && (x >= (this.posx-40)) && (y >= (this.posy)) && (y <= (this.posy+50)) && (this.name === figura.name) && (figura.selected == 1)){
+	if((x <= (this.posx+40)) && (x >= (this.posx-40)) && (y >= (this.posy)) && (y <= (this.posy+100)) && (this.name === figura.name) && (figura.selected == 1)){
 
 		figura.posx = this.posx;
 		figura.posy = this.posy;
