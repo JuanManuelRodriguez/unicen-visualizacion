@@ -29,28 +29,29 @@ var bCuadrado = new BordeRectangulo(canvas.width*7/8,canvas.height/6,50,50,negro
 var bTriangulo = new BordeTriangulo(canvas.width*7/8,canvas.height*3/6,negro,"triangulo");
 var bRombo = new BordeRombo(canvas.width*7/8,canvas.height*5/6,negro,"rombo");
 
+console.log("dificultad",dificultad);
 //dificultad facil = 4 espacios, dificil = 6 espacios
 function divisionTablero(dificultad){
 	if(dificultad === 4 ){
 		bCirculo.posx = canvas.width*5/8;
 		bCirculo.posy = canvas.height/4;
-		bRectangulo.posx = canvas.width*5/8;
-		bRectangulo.posy = canvas.height*3/4;
-		bCuadrado.posx = canvas.width*7/8;
-		bCuadrado.posy = canvas.height/4
+		bRectangulo.posx = (canvas.width*5/8)-36;
+		bRectangulo.posy = (canvas.height*3/4)-25;
+		bCuadrado.posx = (canvas.width*7/8)-25;
+		bCuadrado.posy = (canvas.height/4)-25;
 		bTriangulo.posx = canvas.width*7/8;
-		bTriangulo.posy = canvas.height*3/4;
+		bTriangulo.posy = (canvas.height*3/4)-25;
 	}else{
 		bCirculo.posx = canvas.width*5/8;
 		bCirculo.posy = canvas.height/6;
-		bRectangulo.posx = canvas.width*5/8;
-		bRectangulo.posy = canvas.height*3/6;
-		bCuadrado.posx = canvas.width*7/8;
-		bCuadrado.posy = canvas.height/6
+		bRectangulo.posx = (canvas.width*5/8)-36;
+		bRectangulo.posy = (canvas.height*3/6)-25;
+		bCuadrado.posx = (canvas.width*7/8)-25;
+		bCuadrado.posy = (canvas.height/6)-25;
 		bTriangulo.posx = canvas.width*7/8;
-		bTriangulo.posy = canvas.height*3/6;
-		bRombo.posx = canvas.width*7/8
-		bRombo.posy = canvas.height*5/6
+		bTriangulo.posy = (canvas.height*3/6)-25;
+		bRombo.posx = canvas.width*7/8;
+		bRombo.posy = (canvas.height*5/6)-50;
 	}
 }
 
@@ -73,6 +74,7 @@ bordes.push(bRombo);
 //------------dibujado de tablero y figuras --------------
 function dibujarMundo(){
 	tablero.dibujar();
+	divisionTablero();
 	console.log("dificultad",dificultad);
 	for (var i = 0; i < dificultad; i++) { //dificultad facil = 4 piezas - dificil = 5 piezas 
 		ctx.onload = figuras[i].dibujar();
