@@ -10,9 +10,9 @@ function Triangulo(posx,posy,color,name) {
 Triangulo.prototype.dibujar= function(){
 	ctx.beginPath();//triangulo equilatero de 80px de base y 50px de altura
 	ctx.fillStyle=this.color;
-	ctx.moveTo(this.posx,this.posy);
-    ctx.lineTo(this.posx+40,this.posy+50);
-    ctx.lineTo(this.posx-40,this.posy+50);
+	ctx.moveTo(this.posx,this.posy-25);
+    ctx.lineTo(this.posx+40,this.posy+25);
+    ctx.lineTo(this.posx-40,this.posy+25);
     ctx.fill();
 	ctx.closePath();
 }
@@ -62,7 +62,7 @@ BordeTriangulo.prototype.mouseup = function(layerX,layerY, figura){
 	if((x <= (this.posx+40)) && (x >= (this.posx-40)) && (y >= (this.posy)) && (y <= (this.posy+50)) && (this.name === figura.name) && (figura.selected == 1)){
 
 		figura.posx = this.posx;
-		figura.posy = this.posy;
+		figura.posy = this.posy+25;
 		figura.selected=2;
 		borrar();
 		dibujarMundo();

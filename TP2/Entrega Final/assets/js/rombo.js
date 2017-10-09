@@ -10,11 +10,11 @@ function Rombo(posx,posy,color,name) {
 Rombo.prototype.dibujar= function(){
 	ctx.beginPath();//rombo equilatero de 80px de base y 100px de altura
 	ctx.fillStyle=this.color;
-	ctx.moveTo(this.posx,this.posy);
-    ctx.lineTo(this.posx+40,this.posy+50);
-    ctx.lineTo(this.posx,this.posy+100);
-    ctx.lineTo(this.posx-40,this.posy+50);
-    ctx.lineTo(this.posx,this.posy);
+	ctx.moveTo(this.posx,this.posy-50);
+    ctx.lineTo(this.posx+40,this.posy);
+    ctx.lineTo(this.posx,this.posy+50);
+    ctx.lineTo(this.posx-40,this.posy);
+    ctx.lineTo(this.posx,this.posy-50);
     ctx.fill();
 	ctx.closePath();
 }
@@ -65,7 +65,7 @@ BordeRombo.prototype.mouseup = function(layerX,layerY, figura){
 	if((x <= (this.posx+40)) && (x >= (this.posx-40)) && (y >= (this.posy)) && (y <= (this.posy+100)) && (this.name === figura.name) && (figura.selected == 1)){
 
 		figura.posx = this.posx;
-		figura.posy = this.posy;
+		figura.posy = this.posy+50;
 		figura.selected=2;
 		borrar();
 		dibujarMundo();

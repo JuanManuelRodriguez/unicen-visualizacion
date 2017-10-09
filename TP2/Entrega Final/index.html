@@ -1,0 +1,151 @@
+<!DOCTYPE HTML>
+<!--
+	Stellar by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+
+<head>
+	<title>Rompecabezas</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<link rel="stylesheet" href="assets/css/main.css" />
+</head>
+
+<body>
+
+	<!-- Wrapper -->
+	<div id="wrapper">
+
+		<!-- Header -->
+		<header id="header" class="alt">
+			<span class="logo">
+				<img src="images/image3.png" alt="" />
+			</span>
+			<h1>Rompecabezas</h1>
+			<p>Un juego que desafía tu mente. Incluye niveles de dificultad.
+				<br /> Hecho por
+				<a href="https://github.com/JuanManuelRodriguez/unicen-visualizacion/tree/master/TP2/Entrega%20Final">Rodriguez, Juan Manuel. </a>
+			</p>
+		</header>
+
+		<!-- Nav -->
+		<nav id="nav">
+			<ul>
+				<li>
+					<a href="#intro" class="active">Reglas del juego</a>
+				</li>
+				<li>
+					<a href="#cta">Jugar</a>
+				</li>
+			</ul>
+		</nav>
+
+		<!-- Main -->
+		<div id="main">
+
+			<!-- Introduccion -->
+			<section id="intro" class="main">
+				<div class="spotlight">
+					<div class="content">
+						<header class="major">
+							<h2>Reglas del juego</h2>
+						</header>
+						<p>El juego consiste en colocar las piezas en los contornos con la misma forma.
+							<br/> Cuando coloque todas las piezas ganará el juego.
+							<br/> Podrá elegir entre las dificultades fácil y dificil.
+							<br/> El contador comenzará a correr una vez que precione el botón Comenzar y finalizara cuando se complete el rompecabezas.
+						</p>
+					</div>
+					<span class="image">
+						<img src="images/image1.jpg" alt="" />
+					</span>
+				</div>
+			</section>
+
+			<!-- Jugar -->
+			<section id="cta" class="main special">
+				<header class="major">
+					<h2>Jugar</h2>
+					<p>Elija el nivel de dificultad y luego presione el botón "Comenzar" para iniciar el juego.</p>
+				</header>
+				<footer id="jugar"	class="major">
+					<ul class="actions">
+						<li>
+							<a href="#cta" class="button" id="facil">Facil</a>
+						</li>
+						<li>
+							<a href="#cta" class="button" id="dificil">Dificil</a>
+						</li>
+					</ul>
+					<ul class="actions">
+						<li>
+							<a href="#comenzar" id="comenzar" class="button special timerOn" onclick="interval()">Comenzar</a>
+						</li>
+					</ul>
+					<div>
+						<canvas id="canvas" width="600" height="400" style="border:#000 solid 1px;" />
+					</div>
+					<div id="timerdiv"></div>
+					<div>
+						<h1 id="message"></h1>
+					</div>
+				</footer>
+			</section>
+
+		</div>
+
+		<!-- Footer -->
+		<footer id="footer">
+			<section class="footer-icons">
+				<ul class="icons">
+					<li>
+						<a href="#" class="icon fa-twitter alt">
+							<span class="label">Twitter</span>
+						</a>
+					</li>
+					<li>
+						<a href="#" class="icon fa-facebook alt">
+							<span class="label">Facebook</span>
+						</a>
+					</li>
+					<li>
+						<a href="#" class="icon fa-instagram alt">
+							<span class="label">Instagram</span>
+						</a>
+					</li>
+					<li>
+						<a href="#" class="icon fa-github alt">
+							<span class="label">GitHub</span>
+						</a>
+					</li>
+					<li>
+						<a href="#" class="icon fa-dribbble alt">
+							<span class="label">Dribbble</span>
+						</a>
+					</li>
+				</ul>
+			</section>
+			<p class="copyright"> 2017 &copy; Rompecabezas Cía. Todos los derechos reservados</a>.</p>
+		</footer>
+
+	</div>
+
+	<!-- Scripts -->
+	<script src="assets/js/jquery.min.js"></script>
+	<script src="assets/js/jquery.scrollex.min.js"></script>
+	<script src="assets/js/jquery.scrolly.min.js"></script>
+	<script src="assets/js/skel.min.js"></script>
+	<script src="assets/js/util.js"></script>
+	<script src="assets/js/main.js"></script>
+	<script type="text/javascript" src="assets/js/dificultad.js"></script>
+	<script type="text/javascript" src="assets/js/rectangulo.js"></script>
+	<script type="text/javascript" src="assets/js/circulo.js"></script>
+	<script type="text/javascript" src="assets/js/triangulo.js"></script>
+	<script type="text/javascript" src="assets/js/rombo.js"></script>
+	<script type="text/javascript" src="assets/js/rompecabezas.js"></script>
+	<script type="text/javascript" src="assets/js/timer.js"></script>
+</body>
+
+</html>

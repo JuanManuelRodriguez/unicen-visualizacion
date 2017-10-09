@@ -17,8 +17,8 @@ var tablero = new Rectangulo(canvas.width/2,0,canvas.width/2,canvas.height,amari
 var circulo = new Circulo(50,50,50,rojo,"circulo");//posicion de incio (50,50) r=50
 var rectangulo = new Rectangulo(10,110,75,50,verde,"rectangulo");//posicion de incio (10,110) w=75,h=50
 var cuadrado = new Rectangulo(10,170,50,50,azul,"cuadrado");//posicion de incio (10,170) w=50,h=50
-var triangulo = new Triangulo(50,230,gris,"triangulo");//posicion de inicio (50,230) w=80,h=50
-var rombo = new Rombo(50,290,negro,"rombo");
+var triangulo = new Triangulo(50,255,gris,"triangulo");//posicion de inicio (50,230) w=80,h=50
+var rombo = new Rombo(50,340,negro,"rombo");
 
 var width=canvas.width;
 var height=canvas.height;
@@ -30,7 +30,7 @@ var bTriangulo = new BordeTriangulo(canvas.width*7/8,canvas.height*3/6,negro,"tr
 var bRombo = new BordeRombo(canvas.width*7/8,canvas.height*5/6,negro,"rombo");
 
 console.log("dificultad",dificultad);
-//dificultad facil = 4 espacios, dificil = 6 espacios
+//dificultad facil = 4 espacios, dificil = 5 espacios
 function divisionTablero(dificultad){
 	if(dificultad === 4 ){
 		bCirculo.posx = canvas.width*5/8;
@@ -126,10 +126,11 @@ canvas.onmouseup = function (e){
 			ganaste++;
 		}
 	}
-	if (ganaste === 4){//si "ganaste" es igual a la cantidad de figuras del tablero 
+	if (ganaste === dificultad){//si "ganaste" es igual a la cantidad de figuras del tablero 
 		console.log("GANASTE!");
 		var message = document.getElementById("message");
 		message.innerHTML = "GANASTE!!";
+		borrar();
 		clear();
 	}
 }
