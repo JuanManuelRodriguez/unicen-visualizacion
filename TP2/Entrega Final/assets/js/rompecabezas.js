@@ -9,6 +9,9 @@ var amarillo = "#ffff00";
 var negro = "#000000";
 var blanco = "#ffffff";
 
+document.getElementById('comenzar').style.visibility= 'hidden';
+document.getElementById('volverAJugar').style.visibility= 'hidden';
+
 function borrar(){
 	ctx.clearRect(0,0,canvas.width,canvas.height);
 }
@@ -132,5 +135,13 @@ canvas.onmouseup = function (e){
 		message.innerHTML = "GANASTE!!";
 		borrar();
 		clear();
+		document.getElementById('volverAJugar').style.visibility = 'visible';
 	}
 }
+
+var volverAJugar = document.getElementById('volverAJugar');
+volverAJugar.onclick= function(){
+	document.getElementById("facil").style.visibility = 'visible';
+	document.getElementById("dificil").style.visibility = 'visible';
+	this.style.visibility = 'hidden';
+};

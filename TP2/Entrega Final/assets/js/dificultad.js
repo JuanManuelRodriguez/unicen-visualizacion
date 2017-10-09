@@ -1,15 +1,19 @@
 var facil=document.getElementById("facil");
 var dificil=document.getElementById("dificil");
 var div = document.getElementById("dificultad");
+var comenzar = document.getElementById('comenzar');
+
 var dificultad = 0;
 
 facil.onclick = function(){
 	dificultad = 4;
-	div.style.visibility = 'hidden';
-	
+	this.style.visibility = 'hidden';
+	dificil.style.visibility = 'hidden';
+	comenzar.style.visibility = 'visible';
 } 
 dificil.onclick = function(){
 	dificultad = 5;
-	div.style.visibility = 'hidden';
-	
+	this.style.visibility = 'hidden';
+	facil.style.visibility = 'hidden';
+	comenzar.style.visibility = 'visible';
 } 
