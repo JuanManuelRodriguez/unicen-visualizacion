@@ -1,0 +1,37 @@
+
+#clock {
+  position: relative;
+  width: 600px;
+  height: 600px;
+  margin: 20px auto 0 auto;
+  background-image: url(images/clockface.png);
+  background-repeat: no-repeat;
+}
+
+#sec, #min, #hour {
+  position: absolute;
+}
+@keyframes rotation {
+  from {transform: rotate(0deg)}
+  to {transform: rotate(360deg)}
+}
+
+#sec {
+  animation-timing-function:linear;
+  animation-name: rotation;
+  animation-duration: 60s;
+  animation-iteration-count: infinite;
+}
+
+#min {
+  animation-timing-function:linear;
+  animation-name: rotation;
+  animation-duration: 3600s;
+  animation-iteration-count: infinite;
+}
+#hour {
+  animation-timing-function:linear;
+  animation-name: rotation;
+  animation-duration: 86400s;
+  animation-iteration-count: infinite;
+}

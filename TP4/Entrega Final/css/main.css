@@ -1,0 +1,31 @@
+/*body {
+  background: #24aecd;
+}*/
+
+#hero {
+  width: 586px;
+  height: 592px;
+  background-image: url('./images/css_sprites.png') ;
+  background-position: 0 0;
+  animation-name: run-x, run-y;
+  animation-duration: 2s, 8s;
+  animation-iteration-count: infinite;
+  animation-timing-function: steps(10), steps(8);
+}
+
+@keyframes run-x {
+  from {
+      background-position-x: 0;
+  }
+  to {
+      background-position-x: -5890px;
+  }
+}
+@keyframes run-y {
+  from {
+      background-position-y: 0;
+  }
+  to {
+      background-position-y: -4731px;
+  }
+}
