@@ -1,16 +1,98 @@
-/*body {
-  background: #24aecd;
-}*/
+#game-container{
+  position: relative;
+}
+#game-container div{
+  position: absolute;
 
-#hero {
+}
+
+#layer1{
+  width: 1920px;
+  height: 1080px;
+  z-index: 1;
+  background-image: url('./images/layer_01.png');
+  background-position: 0 0;
+  animation-name: bg;
+  animation-duration: 10s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+#layer2{
+  width: 1920px;
+  height: 1080px;
+  z-index: 50;
+  background-image: url('./images/layer_02.png');
+  background-position: 0 0;
+  animation-name: bg;
+  animation-duration: 8s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+#layer3{
+  width: 1920px;
+  height: 1080px;
+  z-index: 200;
+  background-image: url('./images/layer_03.png');
+  background-position: 0 0;
+  animation-name: bg;
+  animation-duration: 6s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+#layer4{
+  width: 1920px;
+  height: 1080px;
+  z-index: 300;
+  background-image: url('./images/layer_04.png');
+  background-position: 0 0;
+  animation-name: bg;
+  animation-duration: 5s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+#layer5{
+  width: 1920px;
+  height: 1080px;
+  z-index: 1000;
+  background-image: url('./images/layer_05.png');
+  background-position: 0 0;
+  animation-name: bg;
+  animation-duration: 4s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+.hero_run {
+  width: 586px;
+  height: 592px;
+  transform: scale(0.5,0.5);
+  background-image: url('./images/css_sprites.png') ;
+  background-position: 0px 2410px;
+  animation-name: run-x;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+  animation-timing-function: steps(8);
+  z-index: 10000;
+  top: 485px
+}
+.hero_jump {
   width: 586px;
   height: 592px;
   background-image: url('./images/css_sprites.png') ;
   background-position: 0 0;
-  animation-name: run-x, run-y;
-  animation-duration: 2s, 8s;
+  animation-name: run-x;
+  animation-duration: 2s;
   animation-iteration-count: infinite;
-  animation-timing-function: steps(10), steps(8);
+  animation-timing-function: steps(10);
+}
+.hero_slide {
+  width: 586px;
+  height: 592px;
+  background-image: url('./images/css_sprites.png') ;
+  background-position: 0 0;
+  animation-name: run-x;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  animation-timing-function: steps(10);
 }
 
 @keyframes run-x {
@@ -18,7 +100,7 @@
       background-position-x: 0;
   }
   to {
-      background-position-x: -5890px;
+      background-position-x: -4688px;
   }
 }
 @keyframes run-y {
@@ -27,5 +109,13 @@
   }
   to {
       background-position-y: -4731px;
+  }
+}
+@keyframes bg {
+  from {
+      background-position-x: 0;
+  }
+  to {
+      background-position-x: -1920px;
   }
 }
