@@ -7,8 +7,8 @@
 }
 
 #layer1{
-  width: 1920px;
-  height: 1080px;
+  width: 1100px;
+  height: 618px;
   z-index: 1;
   background-image: url('./images/layer_01.png');
   background-position: 0 0;
@@ -18,8 +18,8 @@
   animation-timing-function: linear;
 }
 #layer2{
-  width: 1920px;
-  height: 1080px;
+  width: 1100px;
+  height: 618px;
   z-index: 50;
   background-image: url('./images/layer_02.png');
   background-position: 0 0;
@@ -29,8 +29,8 @@
   animation-timing-function: linear;
 }
 #layer3{
-  width: 1920px;
-  height: 1080px;
+  width: 1100px;
+  height: 618px;
   z-index: 200;
   background-image: url('./images/layer_03.png');
   background-position: 0 0;
@@ -40,8 +40,8 @@
   animation-timing-function: linear;
 }
 #layer4{
-  width: 1920px;
-  height: 1080px;
+  width: 1100px;
+  height: 618px;
   z-index: 300;
   background-image: url('./images/layer_04.png');
   background-position: 0 0;
@@ -51,8 +51,8 @@
   animation-timing-function: linear;
 }
 #layer5{
-  width: 1920px;
-  height: 1080px;
+  width: 1100px;
+  height: 618px;
   z-index: 1000;
   background-image: url('./images/layer_05.png');
   background-position: 0 0;
@@ -63,28 +63,37 @@
 }
 
 #hero{
-  width: 586px;
-  height: 592px;
-  transform: scale(0.5,0.5);
+  width: 234px;
+  height: 228px;
   background-image: url('./images/css_sprites.png') ;
   z-index: 10000;
-  top: 488px
+  top: 128px
+}
+
+#enemy{
+  width: 105px;
+  height: 87px;
+  left: 500px;
+  background-image: url('./images/enemy-flying.png') ;
+  z-index: 10000;
 }
 
 .run {
-  background-position: 0px 2410px;
+  background-position: 0px 2825px;
   animation-name: run;
   animation-duration: 1s;
   animation-iteration-count: infinite;
   animation-timing-function: steps(8);
 }
+
 .jump {
-  background-position: 0px 2410px;
+  background-position: 0px 4154px;
   animation-name: jump;
   animation-duration: 1s;
   animation-iteration-count: 1;
   animation-timing-function: steps(10);
 }
+
 .slide {
   background-position: 0px 3562px;
   animation-name: slide;
@@ -93,12 +102,26 @@
   animation-timing-function: steps(10);
 }
 
+.fly {
+  background-position: 0px 0px;
+  animation-name: fly;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+  animation-timing-function: steps(8);
+}
+.high{
+  top:-70px;
+}
+.low {
+  top:45px;
+}
+
 @keyframes run {
   from {
       background-position-x: 0;
   }
   to {
-      background-position-x: -4688px;
+      background-position-x: -1872px;
   }
 }
 
@@ -116,12 +139,21 @@
       background-position-x: 0;
   }
   to {
-      background-position-x: -1920px;
+      background-position-x: -1100px;
   }
 }
 
 @keyframes jump {
-  0% {transform: scale(0.5,0.5) translateY(0px)}
-  50% {transform: scale(0.5,0.5) translateY(-400px)}
-  100% {transform: scale(0.5,0.5) translateY(0px)}
+  0% {background-position-x: 0;transform: translateY(0px);}
+  50% {background-position-x: 2945;transform: translateY(-400px);}
+  100% {background-position-x: 5890;transform: translateY(0px);}
+}
+
+@keyframes fly {
+  from {
+      background-position-x: 0;
+  }
+  to {
+      background-position-x: -8560px;
+  }
 }
