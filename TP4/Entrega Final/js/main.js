@@ -1,6 +1,7 @@
-let gravity = 0.2;
+let gravity = 0.3;
 let player = new Hero(0, 312);
-let enemy = new Enemy(500, 340);
+let enemy = new Enemy(1000, 330);
+let points = 0;
 
 document.addEventListener('keydown', (event) => {
   const keyName = event.key;
@@ -8,7 +9,7 @@ document.addEventListener('keydown', (event) => {
   switch (keyName) {
     case 'ArrowUp':
       if (player.ground) {
-        player.addAcc(-7);
+        player.addAcc(-10);
         player.state = 'jump';
         player.ground = false;
       }
@@ -28,12 +29,27 @@ document.addEventListener('keyup', (event) => {
 });
 
 function update() {
-  player.addAcc(gravity);
-  player.floor();
-  player.update();
-  enemy.update();
-  if(player.intersects(enemy)){
-    console.log("asdf");
+  if(player.state != 'dead'){
+    player.addAcc(gravity);
+    player.floor();
+    player.update();
+    enemy.update();
+    points+= 0.1;
+    document.getElementById('points').innerHTML= 'Points: '+points.toFixed(0);
+    if(player.intersects(enemy)){
+      if(!(enemy.y == 330 && player.state == 'slide' || enemy.y == 435 && player.state == 'jump')){
+        console.log("Has muerto");
+        if(player.y < 312){
+          player.y = 312;
+        }
+        player.state = 'dead';
+        document.getElementById('layer1').style.animationPlayState='paused';
+        document.getElementById('layer2').style.animationPlayState='paused';
+        document.getElementById('layer3').style.animationPlayState='paused';
+        document.getElementById('layer4').style.animationPlayState='paused';
+        document.getElementById('layer5').style.animationPlayState='paused';
+      }
+    }
   }
 }
 
@@ -41,13 +57,15 @@ function draw() {
   switch (player.state) {
     case 'run':
       player.draw('run');
-
       break;
     case 'jump':
       player.draw('jump');
       break;
     case 'slide':
       player.draw('slide');
+      break;
+    case 'dead':
+      player.draw('dead');
       break;
   }
 

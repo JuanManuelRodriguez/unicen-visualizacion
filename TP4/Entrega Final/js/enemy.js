@@ -10,6 +10,13 @@ class Enemy {
   update() {
     if (this.x < -50) {
       this.x = 1000;
+      let topBot = Math.floor((Math.random()*2)+1);
+      if(topBot == 1){
+        this.y = 330;
+      }
+      else if(topBot == 2){
+        this.y = 435;
+      }
     }
     this.x -= 10;
     this.right = this.x + this.div.offsetWidth;

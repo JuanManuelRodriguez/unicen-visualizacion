@@ -5,7 +5,7 @@ class Hero {
     this.div = document.getElementById('hero');
     this.acc = 0;
     this.vel = 0;
-    this.state = 'jump';
+    this.state = 'run';
     this.ground = true;
     this.right = this.x + this.div.offsetWidth;
     this.bottom = this.y + this.div.offsetHeight;
@@ -17,7 +17,7 @@ class Hero {
     this.acc = 0;
     if (this.y >= 312 && this.state == 'jump') {
       this.ground = true;
-      this.state = 'jump';
+      this.state = 'run';
     }
     this.right = this.x + this.div.offsetWidth;
     this.bottom = this.y + this.div.offsetHeight;
