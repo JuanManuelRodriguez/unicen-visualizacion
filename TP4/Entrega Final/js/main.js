@@ -2,6 +2,7 @@ let gravity = 0.3;
 let player = new Hero(0, 312);
 let enemy = new Enemy(1000, 330);
 let points = 0;
+let gameContainer=$('#game-over');
 
 document.addEventListener('keydown', (event) => {
   const keyName = event.key;
@@ -20,11 +21,13 @@ document.addEventListener('keydown', (event) => {
   }
 });
 document.addEventListener('keyup', (event) => {
-  const keyName = event.key;
-  switch (keyName) {
-    case 'ArrowDown':
-      player.state = 'run';
-      break;
+  if(player.state != 'dead'){
+    const keyName = event.key;
+    switch (keyName) {
+      case 'ArrowDown':
+        player.state = 'run';
+        break;
+    }
   }
 });
 
@@ -48,6 +51,11 @@ function update() {
         document.getElementById('layer3').style.animationPlayState='paused';
         document.getElementById('layer4').style.animationPlayState='paused';
         document.getElementById('layer5').style.animationPlayState='paused';
+
+        //modal de GAME OVER
+        gameContainer.addClass('game-over text-center text-white');
+        let perdio=`PERDIO <br> Su puntaje es: ${points.toFixed(0)} <br> Presione F5 para volver a jugar`;
+        gameContainer.append(perdio);
       }
     }
   }
@@ -69,7 +77,7 @@ function draw() {
       break;
   }
 
-  enemy.draw();
+  enemy.draw('fly');
 }
 
 function mainLoop() {

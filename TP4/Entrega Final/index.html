@@ -1,29 +1,53 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE HTML>
+<!--
+	Identity by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>CSS3 Game</title>
-  <link rel="stylesheet" href="./css/main.css">
+	<title>CSS3 GAME</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<link rel="stylesheet" href="./css/main.css" />
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb"
+	crossorigin="anonymous">
 </head>
 
 <body>
-  <div id="game-container">
-    <div id="hero" class="run"></div>
-    <div id="enemy" class="fly high"></div>
+	<header>
+		<h1 class="text-center text-white">Perdido en XYZ321</h1>
+		<h3 class="text-center text-white">En algun lugar del espacio un perdido robot quiere vovler a su hogar.</h3>
+		<p class="text-center text-success bg-dark">Controles del juego: Flecha hacia arriba - Salta y Flecha hacia abajo - Desliza</p>
+	</header>
+	<div class="row ">
+		<div class="offset-md-2 offset-lg-2 col-md-8 col-lg-8">
+			<div id="center-from-top">
+				<a class="btn btn-primary btn-lg btn-block" id="btn-play" href="game.html" role="button">PLAY</a>
+			</div>
+		</div>
+	</div>
 
-    <div id="points"></div>
-    <div id="layer1"></div>
-    <div id="layer2"></div>
-    <div id="layer3"></div>
-    <div id="layer4"></div>
-    <div id="layer5"></div>
-  </div>
-  <script src="./js/hero.js"></script>
-  <script src="./js/enemy.js"></script>
-  <script src="./js/main.js"></script>
+	<!-- Footer -->
+	<footer class="fixed-bottom fondo-negro text-center">
+		<ul class="copyright">
+			<li>Design by:
+				<a href="#">Juan Manuel Rodriguez</a>
+			</li>
+		</ul>
+	</footer>
+
+	
+	<script
+  src="https://code.jquery.com/jquery-3.2.1.min.js"
+  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh"
+	crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ"
+	crossorigin="anonymous"></script>
+
 </body>
 
 </html>
