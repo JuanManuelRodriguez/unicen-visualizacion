@@ -271,20 +271,22 @@ background: #0291a7;
   left: 25%;
 }
 
-.message {
+.message, .message-background {
   width: 50%;
   height: 50%;
   position: absolute;
-  background-color: #ccc;
   margin-left: -500px;
   top: 25%;
 }
+.message {
+  text-align: center;
+  background-color: transparent;
+  z-index: 200;
+}
 .message-background{
-  width: 200px;
-  height: 100px;
   background-color: #FFFFFF;
   padding: 10px;
-  margin: 0px 0px 10px 0px;
+  margin: 0px 0px 10px -500px;
   opacity: 0.5;
 }
 

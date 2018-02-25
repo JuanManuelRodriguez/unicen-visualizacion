@@ -22,6 +22,9 @@ $(window).scroll(function () {
     $('.message').css({
       'transform': 'translate(' + wScroll / 6 + '%, 0px)'
     });
+    $('.message-background').css({
+      'transform': 'translate(' + wScroll / 6 + '%, 0px)'
+    });
   }
 
   // Landing Elements
