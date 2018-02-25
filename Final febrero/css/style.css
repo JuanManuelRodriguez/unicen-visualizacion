@@ -336,16 +336,19 @@ background: #0291a7;
 
 figcaption h2 {
   color: #fff;
+  margin-bottom: 0px;
 }
 
 figcaption .price {
   top: 50%;
   font-size: 52px;
+  margin-bottom: 0px;
 }
 
 figcaption .description {
   top: 60%;
   color: #fff;
+  margin: 0px 5px;
 }
 
 .front, .back, .container-front-back {
