@@ -11,8 +11,8 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
     crossorigin="anonymous">
   <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css">
+  <link rel="stylesheet" href="css/skeleton.css">
+  <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/style.css">
 
 </head>
@@ -22,33 +22,35 @@
     <nav id="sidebar" class="active">
       <div id="dismiss">
         <button type="button" class="close" aria-label="Close">
-          <i class="fas fa-times"></i>
+          <i class="fas fa-times-circle fa-3x navbar-icon-color"></i>
         </button>
       </div>
       <!-- Sidebar Header -->
       <div class="sidebar-header">
-        <h3>
-          <img src="images/favicon.png" alt="hambuerger-icon"> HMBG
-          <img src="images/favicon.png" alt="hambuerger-icon">
-        </h3>
+        <h3>HMBG</h3>
       </div>
 
       <!-- Sidebar Links -->
       <ul class="list-unstyled components">
         <li>
-          <a href="#container-background">Home</a>
+          <a href="#container-background">
+            <i class="fas fa-home"></i> Home</a>
         </li>
         <li>
-          <a href="#hmbg-app-box">HMBG App</a>
+          <a href="#hmbg-app-box">
+            <i class="fas fa-mobile"></i> HMBG App</a>
         </li>
         <li>
-          <a href="#content-menu">Menu</a>
+          <a href="#content-menu">
+            <i class="fas fa-list-alt"></i> Menu</a>
         </li>
         <li>
-          <a href="#content-promos">Promos</a>
+          <a href="#content-promos">
+            <i class="fas fa-dollar-sign"></i> Promos</a>
         </li>
         <li>
-          <a href="#contact">Contact/Sugestion</a>
+          <a href="#contact">
+            <i class="fas fa-phone-square"> </i> Contact/Sugestion</a>
         </li>
       </ul>
     </nav>
@@ -70,7 +72,7 @@
     <img class="home-button" src="images/home-icon.png"></img>
   </a>
   <button type="button" id="sidebarCollapse" class="btn btn-info navbar-btn">
-    <i class="fas fa-bars"></i>
+    <i class="fas fa-bars fa-3x"></i>
   </button>
   <!-- app's section -->
   <section id="hmbg-app-box">
@@ -78,14 +80,15 @@
     <div class="hamb"></div>
     <div class="bread-bottom"></div>
     <div class="message">
-      <h2>
-        HMBG APP
-      </h2>
-      <p>
+      <h2 class="message-title">HMBG APP</h2>
+      <p class="message-description">
         Join the HMBG club by downloading the app and always take us on your cell phone
       </p>
-      <p>Discover the exclusive benefits of using our APP</p>
-      <div>
+      <p class="message-description">Discover the exclusive benefits of using our APP</p>
+      <p class="message-description">
+        <i class="fas fa-users fa-5x"></i>
+      </p>
+      <div class="message-img">
         <img src="images/app-store.png" alt="aplle store" class="app-store">
         <img src="images/google-play.png" alt="play store" class="app-store">
       </div>
@@ -276,8 +279,8 @@
     </article>
   </section>
   <footer>
-    <div class="row footer-stuff" id="contact">
-      <div class="columns four">
+    <div class="row justify-content-center footer-stuff" id="contact">
+      <div class="col-6">
         <strong>FIND US ON</strong>
         <br>
         <a href="https://twitter.com/login?lang=es">
@@ -293,32 +296,34 @@
           <i class="fab fa-instagram fa-3x"></i>
         </a>
       </div>
-      <div class="columns six">
+      <div class="col-6">
         <p>
           <strong>Contact us</strong> or leave a comment about our super HaMBurGer.
         </p>
         <form class="row">
-          <div class="columns six">
-            <input type="text" placeholder="Your Name" class="u-full-width">
+          <div class="col-6">
+            <input type="text" placeholder="Your Name" >
           </div>
-          <div class="columns six">
-            <input type="text" placeholder="Your Surname" class="u-full-width">
+          <div class="col-6">
+            <input type="text" placeholder="Your Surname" >
           </div>
-          <div class="columns twelve wr-txt-area">
-            <textarea rows="3" cols="30" placeholder="message" class="u-full-width"></textarea>
+          <div class="col-12 wr-txt-area">
+            <textarea rows="3" placeholder="message" ></textarea>
           </div>
-          <div class="columns eight">
-            <input type="email" placeholder="Your Email" class="u-full-width">
+          <div class="col-8">
+            <input type="email" placeholder="Your Email" >
           </div>
-          <div class="columns four">
+          <div class="col-4">
             <input type="submit" class="button-primary">
           </div>
         </form>
-        <div class="row">
-          <p class="columns twelve">
-            <i class="far fa-copyright"></i> 2018 - All rights reserved </p>
-        </div>
+        
       </div>
+      <div class="row">
+          <div class="col-12 justify-content-center">
+            <p><i class="far fa-copyright"></i> 2018 - All rights reserved </p>
+          </div>
+        </div>
     </div>
   </footer>
   <script src="js/jquery-2.1.3.min.js"></script>
