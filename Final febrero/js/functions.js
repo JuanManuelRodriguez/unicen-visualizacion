@@ -1,8 +1,8 @@
 $(document).ready(function() {
   $('.home-button').on('click', function () {
     $(window).scrollTop(0, 0);
-  })
-
+  });
+  
   $(window).scroll(function () {
     var hmbgAppTop = $('#hmbg-app-box').offset().top;
     var wScroll = $(this).scrollTop();
@@ -20,10 +20,7 @@ $(document).ready(function() {
         'transform': 'translate(0px, -' + wScroll / 30 + '%)'
       });
       //mensaje
-      $('.message').css({
-        'transform': 'translate(' + wScroll / 6 + '%, 0px)'
-      });
-      $('.message-background').css({
+      $('.message, .message-background').css({
         'transform': 'translate(' + wScroll / 6 + '%, 0px)'
       });
     }
@@ -35,6 +32,43 @@ $(document).ready(function() {
           $('.hmbg-pics figure').eq(i).addClass('is-showing');
         }, (700 * (Math.exp(i * 0.14))) - 700);
       });
+    }
+
+    // Breadcrumb
+    if (wScroll > $('#container-background').offset().top ) { // Home
+      $(".home").css({"display": "inline"});
+      $(".hmbg-app").css({"display": "none"});
+      $(".menu").css({"display": "none"});
+      $(".promos").css({"display": "none"});
+      $(".contact").css({"display": "none"});
+    }
+    if (wScroll > $('#hmbg-app-box').offset().top - ($(window).height() / 1.3)) { // HMBG app
+      $(".home").css({"display": "none"});
+      $(".hmbg-app").css({"display": "inline"});
+      $(".menu").css({"display": "none"});
+      $(".promos").css({"display": "none"});
+      $(".contact").css({"display": "none"});
+    }
+    if (wScroll > $('#content-menu').offset().top - ($(window).height() / 1.3)) {
+      $(".home").css({"display": "none"});
+      $(".hmbg-app").css({"display": "none"});
+      $(".menu").css({"display": "inline"});
+      $(".promos").css({"display": "none"});
+      $(".contact").css({"display": "none"});
+    }
+    if (wScroll > $('#content-promos').offset().top - ($(window).height() / 1.3)) {
+      $(".home").css({"display": "noene"});
+      $(".hmbg-app").css({"display": "none"});
+      $(".menu").css({"display": "none"});
+      $(".promos").css({"display": "inline"});
+      $(".contact").css({"display": "none"});
+    }
+    if (wScroll > $('#contact').offset().top - ($(window).height() / 0.8)) {
+      $(".home").css({"display": "none"});
+      $(".hmbg-app").css({"display": "none"});
+      $(".menu").css({"display": "none"});
+      $(".promos").css({"display": "none"});
+      $(".contact").css({"display": "inline"});
     }
   });
 

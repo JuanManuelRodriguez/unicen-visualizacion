@@ -172,6 +172,25 @@ a, a:hover, a:focus {
   z-index: 990;
   background: #47748b;
   border-radius: 50%;
+  color: #fff;
+}
+
+.breadcrum {
+  font-family: aller;
+  font-weight: bold;
+  font-style: italic;
+  display: none;
+  position: fixed;
+  top: 27px;
+  left: 4%;
+  z-index: 989;
+  background: #47748b;
+  color: #fff;
+  font-size: 20px;
+  padding: 14px 15px;
+  padding-left: 50px;
+  border-top-right-radius: 10%;
+  border-bottom-right-radius: 10%;
 }
 
 .title-section {

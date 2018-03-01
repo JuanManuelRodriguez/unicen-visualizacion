@@ -38,7 +38,7 @@
         </li>
         <li>
           <a href="#hmbg-app-box">
-            <i class="fas fa-mobile"></i> HMBG App</a>
+            <i class="fas fa-mobile"></i>    HMBG App</a>
         </li>
         <li>
           <a href="#content-menu">
@@ -46,9 +46,9 @@
         </li>
         <li>
           <a href="#content-promos">
-            <i class="fas fa-dollar-sign"></i> Promos</a>
+            <i class="fas fa-dollar-sign"></i>   Promos</a>
         </li>
-        <li>
+        <li class="footer-contact">
           <a href="#contact">
             <i class="fas fa-phone-square"> </i> Contact/Sugestion</a>
         </li>
@@ -56,6 +56,20 @@
     </nav>
     <div class="overlay"></div>
   </div>
+
+  <!-- Home button -->
+  <a href="#">
+    <img class="home-button" src="images/home-icon.png"></img>
+  </a>
+  <button type="button" id="sidebarCollapse" class="btn btn-info navbar-btn">
+    <i class="fas fa-bars fa-3x"></i>
+  </button>
+  <!-- Breadcrumbs -->
+  <div class="breadcrum home">HOME</div>
+  <div class="breadcrum hmbg-app">HMBG-APP</div>
+  <div class="breadcrum menu">MENU</div>
+  <div class="breadcrum promos">PROMOS</div>
+  <div class="breadcrum contact">CONTACT/SUGESTS</div>
   <!-- home's section -->
   <header id="container-background">
     <div class="bgrnd-layer1"></div>
@@ -68,12 +82,6 @@
     <div class="bgrnd-layer8">Made with
       <i class="fas fa-heart"></i> for the entire galaxy</div>
   </header>
-  <a href="#">
-    <img class="home-button" src="images/home-icon.png"></img>
-  </a>
-  <button type="button" id="sidebarCollapse" class="btn btn-info navbar-btn">
-    <i class="fas fa-bars fa-3x"></i>
-  </button>
   <!-- app's section -->
   <section id="hmbg-app-box">
     <div class="bread-top"></div>
@@ -263,7 +271,6 @@
               <p class="description">Medallón de Carne MEGA con delicioso cheddar, jamón, lechuga y tomate. ¿Que esperas para probarla?</p>
             </figcaption>
           </figure>
-
           <figure class="columns six container-front-back">
             <img class="front" src="images/menu9.jpg">
             <figcaption class="back">
@@ -279,20 +286,20 @@
     </article>
   </section>
   <footer>
-    <div class="row justify-content-center footer-stuff" id="contact">
+    <div class="row justify-content-center footer-stuff">
       <div class="col-6">
         <strong>FIND US ON</strong>
         <br>
-        <a href="https://twitter.com/login?lang=es">
+        <a href="https://twitter.com/login?lang=es" target="_blank">
           <i class="fab fa-twitter-square fa-3x"></i>
         </a>
-        <a href="https://www.facebook.com/">
+        <a href="https://www.facebook.com/" target="_blank">
           <i class="fab fa-facebook fa-3x"></i>
         </a>
-        <a href="https://ar.pinterest.com/">
+        <a href="https://ar.pinterest.com/" target="_blank">
           <i class="fab fa-pinterest-square fa-3x"></i>
         </a>
-        <a href="https://www.instagram.com/?hl=es-la">
+        <a href="https://www.instagram.com/?hl=es-la" target="_blank">
           <i class="fab fa-instagram fa-3x"></i>
         </a>
       </div>
@@ -326,6 +333,7 @@
         </div>
     </div>
   </footer>
+  <div id="contact"></div>
   <script src="js/jquery-2.1.3.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
     crossorigin="anonymous"></script>
